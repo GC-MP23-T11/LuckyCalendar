@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">LuckyCalendar</string>
     <string name="create_account"><u>Create Account</u></string>
+    <!-- 날짜 관련 string   -->
+    <string name="Monday">Mo</string>
+    <string name="Tuesday">Tue</string>
+    <string name="Wendsday">We</string>
+    <string name="Turseday">Tu</string>
+    <string name="Friday">Fr</string>
+    <string name="Saturday">Sa</string>
+    <string name="Sunday">Su</string>
+
 </resources>
