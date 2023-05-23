@@ -24,4 +24,6 @@ public class UserPage extends AppCompatActivity {
 
     public void modUserEmail(View view) {
     }
+
+    //Add kind of Button onClicks
 }
