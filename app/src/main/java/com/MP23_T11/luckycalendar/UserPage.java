@@ -18,4 +18,10 @@ public class UserPage extends AppCompatActivity {
 
     public void modProfilePic(View view) {
     }
+
+    public void modUserNum(View view) {
+    }
+
+    public void modUserEmail(View view) {
+    }
 }

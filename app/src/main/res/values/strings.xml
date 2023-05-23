@@ -28,5 +28,6 @@
     <string name="DemoEmail">michael.han@thxto.me</string>
     <string name="e_mail">E-Mail</string>
     <string name="user_info">User Info.</string>
+    <string name="settings">Settings</string>
 
 </resources>
