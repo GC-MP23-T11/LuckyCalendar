@@ -23,5 +23,10 @@
     <string name="demousername">DemoUserName</string>
     <string name="demodate">Mar. 18, 2023</string>
     <string name="with_moodcalendar_from">With Mood from</string>
+    <string name="mobile_num">Mobile Num.</string>
+    <string name="DemoPhoneNum">+82-10-0000-0000</string>
+    <string name="DemoEmail">michael.han@thxto.me</string>
+    <string name="e_mail">E-Mail</string>
+    <string name="user_info">User Info.</string>
 
 </resources>
