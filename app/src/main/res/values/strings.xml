@@ -19,5 +19,9 @@
     <string name="plus">+</string>
     <string name="_20">/20</string>
     <string name="logo">Logo</string>
+    <string name="profile_pic">Profile Pic</string>
+    <string name="demousername">DemoUserName</string>
+    <string name="demodate">Mar. 18, 2023</string>
+    <string name="with_moodcalendar_from">With Mood from</string>
 
 </resources>
