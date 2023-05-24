@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Settings"
+        android:id="@+id/userTab"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:icon="@android:drawable/ic_dialog_email"/>
+
+    <item android:title="Calendar"
+        android:id="@+id/calTab"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_dialog_info"/>
+
+    <item android:title="Satistics"
+        android:id="@+id/statTab"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_dialog_map" />
+</menu>
