@@ -17,9 +17,6 @@
             android:name=".UserPage"
             android:exported="false" />
         <activity
-            android:name=".MainCal"
-            android:exported="false" />
-        <activity
             android:name=".Register"
             android:exported="false" />
         <activity

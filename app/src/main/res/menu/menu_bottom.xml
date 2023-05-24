@@ -5,18 +5,19 @@
     <item android:title="Settings"
         android:id="@+id/userTab"
         android:enabled="true"
-        app:showAsAction="ifRoom"
-        android:icon="@android:drawable/ic_dialog_email"/>
+        android:icon="@drawable/setting_icon"
+        app:showAsAction="always" />
 
     <item android:title="Calendar"
         android:id="@+id/calTab"
-        app:showAsAction="ifRoom"
+        android:checked="true"
         android:enabled="true"
-        android:icon="@android:drawable/ic_dialog_info"/>
+        android:icon="@drawable/calendar_icon"
+        app:showAsAction="always" />
 
     <item android:title="Satistics"
         android:id="@+id/statTab"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         android:enabled="true"
-        android:icon="@android:drawable/ic_dialog_map" />
+        android:icon="@drawable/statistic_icon" />
 </menu>
