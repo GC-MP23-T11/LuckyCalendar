@@ -1,12 +1,17 @@
 package com.MP23_T11.luckycalendar;
 
-import android.os.Bundle;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 import androidx.fragment.app.Fragment;
-
+import androidx.lifecycle.ViewModelProvider;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +19,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Statistics extends Fragment {
+
+    private DateViewModel viewModel; // DateViewModel 인스턴스를 저장하는 변수
+
+    private final String[] monthNames = new String[]{"January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"};
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +69,57 @@ public class Statistics extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_statistics, container, false);
+        View view = inflater.inflate(R.layout.fragment_statistics, container, false);
+
+        // ViewModel 인스턴스 콜
+        viewModel = new ViewModelProvider(requireActivity()).get(DateViewModel.class);
+
+        // 레이아웃의 뷰를 참조.
+        ImageButton leftButton = view.findViewById(R.id.leftarrow);
+        ImageButton rightButton = view.findViewById(R.id.rightarrow);
+        TextView monthTextView = view.findViewById(R.id.month);
+        TextView yearTextView = view.findViewById(R.id.year);
+
+        // 현재 날짜를 표시
+        updateDate(monthTextView, yearTextView);
+
+        // 왼쪽 버튼 클릭 시 월과 연도를 감소시키는 이벤트 리스너를 설정
+        leftButton.setOnClickListener(v -> {
+            int month = viewModel.getMonth();
+            int year = viewModel.getYear();
+            if (month == 1) {
+                month = 12;
+                year--;
+            } else {
+                month--;
+            }
+            viewModel.setMonth(month);
+            viewModel.setYear(year);
+            updateDate(monthTextView, yearTextView);
+        });
+
+        // 오른쪽 버튼 클릭 시 월과 연도를 증가시키는 이벤트 리스너를 설정
+        rightButton.setOnClickListener(v -> {
+            int month = viewModel.getMonth();
+            int year = viewModel.getYear();
+            if (month == 12) {
+                month = 1;
+                year++;
+            } else {
+                month++;
+            }
+            viewModel.setMonth(month);
+            viewModel.setYear(year);
+            updateDate(monthTextView, yearTextView);
+        });
+
+        // 생성된 뷰를 반환
+        return view;
+    }
+
+    // 월과 연도 텍스트 뷰를 업데이트하는 메서드
+    private void updateDate(TextView monthTextView, TextView yearTextView) {
+        monthTextView.setText(monthNames[viewModel.getMonth() - 1]);
+        yearTextView.setText(String.valueOf(viewModel.getYear()));
     }
 }

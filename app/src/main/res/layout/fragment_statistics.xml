@@ -54,7 +54,7 @@
                     android:fontFamily="@font/inter"
                     android:text="Month"
                     android:textAlignment="center"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/year"
