@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/date_box"
+    android:layout_width="35dp"
+    android:layout_height="64dp"
+    android:orientation="vertical"
+    android:background="@drawable/rectangle_long_static">
+
+
+    <TextView
+        android:id="@+id/date_text"
+        android:layout_width="25dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="11dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="02"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/day_text"
+        android:layout_width="25dp"
+        android:layout_height="14dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/inter"
+        android:text="@string/Turseday"
+        android:textAlignment="center"
+        android:textSize="12sp" />
+
+</LinearLayout>

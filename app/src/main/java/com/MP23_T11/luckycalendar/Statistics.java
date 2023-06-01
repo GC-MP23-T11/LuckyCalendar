@@ -1,11 +1,16 @@
 package com.MP23_T11.luckycalendar;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +75,22 @@ public class Statistics extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_statistics, container, false);
+
+        // 데이터 준비
+        List<Memo> memos = new ArrayList<>(); // 여기에 메모 데이터를 채워넣으면됨. 예를 들어, new Memo("02", "Thursday"), new Memo("03", "Friday") 등으로 채울 수 있음.
+
+        memos.add(new Memo("01", "Monday", ""));
+        memos.add(new Memo("02", "Tuesday", ""));
+        memos.add(new Memo("03", "Wednesday", ""));
+
+
+
+        // RecyclerView 설정
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        DateBoxAdapter adapter = new DateBoxAdapter(memos); // memos는 메모 데이터 리스트
+        recyclerView.setAdapter(adapter);
+
 
         // ViewModel 인스턴스 콜
         viewModel = new ViewModelProvider(requireActivity()).get(DateViewModel.class);

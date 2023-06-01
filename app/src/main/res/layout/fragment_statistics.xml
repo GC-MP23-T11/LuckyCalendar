@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".Statistics">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
@@ -354,157 +355,16 @@
                 android:src="@drawable/arrowgreen_button_left" />
 
             <!-- 날짜/요일 박스       -->
-            <LinearLayout
-                android:layout_width="239dp"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="0dp"
                 android:layout_height="64dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:layout_marginEnd="13dp"
+                android:layout_marginStart="13dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal" />
 
-                <LinearLayout
-                    android:id="@+id/date_box1"
-                    android:layout_width="35dp"
-                    android:layout_height="64dp"
-                    android:orientation="vertical"
-                    android:background="@drawable/rectangle_long_static">
-
-                    <TextView
-                        android:layout_width="25dp"
-                        android:layout_height="24dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="11dp"
-                        android:fontFamily="@font/inter_semibold"
-                        android:text="02"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:layout_width="25dp"
-                        android:layout_height="14dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/inter"
-                        android:text="@string/Turseday"
-                        android:textAlignment="center"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/date_box2"
-                    android:layout_width="35dp"
-                    android:layout_height="64dp"
-                    android:layout_marginLeft="16dp"
-                    android:orientation="vertical"
-                    android:background="@drawable/rectangle_long_static">
-
-                    <TextView
-                        android:layout_width="25dp"
-                        android:layout_height="24dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="11dp"
-                        android:fontFamily="@font/inter_semibold"
-                        android:text="03"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:layout_width="25dp"
-                        android:layout_height="14dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/inter"
-                        android:text="@string/Wendsday"
-                        android:textAlignment="center"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/date_box3"
-                    android:layout_width="35dp"
-                    android:layout_height="64dp"
-                    android:layout_marginLeft="16dp"
-                    android:orientation="vertical"
-                    android:background="@drawable/rectangle_long_static">
-
-                    <TextView
-                        android:layout_width="25dp"
-                        android:layout_height="24dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="11dp"
-                        android:fontFamily="@font/inter_semibold"
-                        android:text="05"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:layout_width="25dp"
-                        android:layout_height="14dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/inter"
-                        android:text="@string/Friday"
-                        android:textAlignment="center"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/date_box4"
-                    android:layout_width="35dp"
-                    android:layout_height="64dp"
-                    android:layout_marginLeft="16dp"
-                    android:orientation="vertical"
-                    android:background="@drawable/rectangle_long_static">
-
-                    <TextView
-                        android:layout_width="25dp"
-                        android:layout_height="24dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="11dp"
-                        android:fontFamily="@font/inter_semibold"
-                        android:text="06"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:layout_width="25dp"
-                        android:layout_height="14dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/inter"
-                        android:text="@string/Saturday"
-                        android:textAlignment="center"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/date_box5"
-                    android:layout_width="35dp"
-                    android:layout_height="64dp"
-                    android:layout_marginLeft="16dp"
-                    android:orientation="vertical"
-                    android:background="@drawable/rectangle_long_static">
-
-                    <TextView
-                        android:layout_width="25dp"
-                        android:layout_height="24dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="11dp"
-                        android:fontFamily="@font/inter_semibold"
-                        android:text="12"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:layout_width="25dp"
-                        android:layout_height="14dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/inter"
-                        android:text="@string/Tuesday"
-                        android:textAlignment="center"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-            </LinearLayout>
 
             <ImageButton
                 android:id="@+id/right_arrow_below"
