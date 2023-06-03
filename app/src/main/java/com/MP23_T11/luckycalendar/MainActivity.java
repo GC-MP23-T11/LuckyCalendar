@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
-    private String TAG = "tab";
+    private static final String TAG = "tab";
 
     Settings settingsFragment;
     Calendar calendarFragment;

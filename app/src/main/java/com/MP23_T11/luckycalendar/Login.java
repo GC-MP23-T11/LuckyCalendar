@@ -152,7 +152,6 @@ public class Login extends AppCompatActivity {
 
                 // 이미 로그인 되어있는 경우
                 if (gsa != null) {
-                    Toast.makeText(Login.this, "Login...", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(i);
                     finish();
