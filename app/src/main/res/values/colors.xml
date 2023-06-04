@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bottomNav">#FFEDEDED</color>
+    <color name="buttonSelected">#0B5EDA</color>
 </resources>

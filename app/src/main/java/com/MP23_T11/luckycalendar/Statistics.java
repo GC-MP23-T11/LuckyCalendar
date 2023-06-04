@@ -91,6 +91,10 @@ public class Statistics extends Fragment {
         DateBoxAdapter adapter = new DateBoxAdapter(memos); // memos는 메모 데이터 리스트
         recyclerView.setAdapter(adapter);
 
+        // RecyclerView 아이템 간격 설정
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing);
+        recyclerView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
+
 
         // ViewModel 인스턴스 콜
         viewModel = new ViewModelProvider(requireActivity()).get(DateViewModel.class);
@@ -133,6 +137,21 @@ public class Statistics extends Fragment {
             viewModel.setYear(year);
             updateDate(monthTextView, yearTextView);
         });
+
+
+        //아래쪽 버튼 클릭 리스너
+        ImageButton leftButtonBelow = view.findViewById(R.id.left_arrow_below);
+        ImageButton rightButtonBelow = view.findViewById(R.id.right_arrow_below);
+
+        leftButtonBelow.setOnClickListener(v -> {
+            adapter.selectPreviousItem();
+        });
+
+        rightButtonBelow.setOnClickListener(v -> {
+            adapter.selectNextItem();
+        });
+
+
 
         // 생성된 뷰를 반환
         return view;
