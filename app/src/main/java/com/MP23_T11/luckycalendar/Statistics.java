@@ -8,6 +8,7 @@ import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -23,6 +24,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,6 +35,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
+import java.util.Map;
 
 
 /**
@@ -195,35 +199,84 @@ public class Statistics extends Fragment {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()) {
-                        List<Memo> memos = new ArrayList<>();
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            try {
-                                String dateString = document.getString("date");
-                                String review = document.getString("review");
-                                String emotion = document.getString("emotion");
+                        if (task.isSuccessful()) {
+                            List<Memo> memos = new ArrayList<>();
 
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd", Locale.KOREA);
-                                Date date = format.parse(dateString);
+                            // 감정 카운트 맵을 초기화합니다.
+                            Map<String, Integer> emotionCounts = new HashMap<>();
+                            emotionCounts.put("sad", 0);
+                            emotionCounts.put("happy", 0);
+                            emotionCounts.put("stressed", 0);
+                            emotionCounts.put("bored", 0);
 
-                                Calendar calendar = Calendar.getInstance();
-                                calendar.setTime(date);
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                try {
+                                    String dateString = document.getString("date");
+                                    String review = document.getString("review");
+                                    String emotion = document.getString("emotion");
 
-                                int day = calendar.get(Calendar.DAY_OF_MONTH);
-                                String dayOfWeek = new SimpleDateFormat("EEEE", Locale.ENGLISH).format(date);
+                                    SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd", Locale.KOREA);
+                                    Date date = format.parse(dateString);
 
-                                memos.add(new Memo(String.format("%02d", day), dayOfWeek, emotion, review));
-                            } catch (ParseException e) {
-                                e.printStackTrace();
+                                    Calendar calendar = Calendar.getInstance();
+                                    calendar.setTime(date);
+
+                                    int day = calendar.get(Calendar.DAY_OF_MONTH);
+                                    String dayOfWeek = new SimpleDateFormat("EEEE", Locale.ENGLISH).format(date);
+
+                                    memos.add(new Memo(String.format("%02d", day), dayOfWeek, emotion, review));
+
+                                    // 해당 메모의 감정 카운트를 증가시킵니다.
+                                    if (emotionCounts.containsKey(emotion)) {
+                                        emotionCounts.put(emotion, emotionCounts.get(emotion) + 1);
+                                    }
+
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
                             }
+                            Log.d("loadMemos", "Fetched memos: " + memos.size());
+                            adapter.setMemos(memos);
+
+                            // Update ProgressBar widths and TextViews
+                            updateProgressBarsAndTextViews(emotionCounts);
+
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
                         }
-                        Log.d("loadMemos", "Fetched memos: " + memos.size());
-                        adapter.setMemos(memos);
-                    } else {
-                        Log.w(TAG, "Error getting documents.", task.getException());
                     }
-                }
                 });
+    }
+
+    private void updateProgressBarsAndTextViews(Map<String, Integer> emotionCounts) {
+        View view = getView();
+
+        if (view != null) {
+            updateProgressBarAndTextView(view, R.id.progress_bar1, R.id.sum_num1, emotionCounts.get("bored"));
+            updateProgressBarAndTextView(view, R.id.progress_bar2, R.id.sum_num2, emotionCounts.get("happy"));
+            updateProgressBarAndTextView(view, R.id.progress_bar3, R.id.sum_num3, emotionCounts.get("sad"));
+            updateProgressBarAndTextView(view, R.id.progress_bar4, R.id.sum_num4, emotionCounts.get("stressed"));
+        }
+    }
+
+    private void updateProgressBarAndTextView(View view, int progressBarId, int textViewId, int count) {
+        ImageView progressBar = view.findViewById(progressBarId);
+        TextView textView = view.findViewById(textViewId);
+
+        // 각 ProgressBar의 기본 폭은 36dp이며, 각 갯수에 따라 12dp씩 증가(원래는 최대범위인 31에 맞는 6dp여야하지만 Test위해 6dp로)
+        int widthDp = 36 + count * 12;
+        ViewGroup.LayoutParams params = progressBar.getLayoutParams();
+        params.width = dpToPx(widthDp);
+        progressBar.setLayoutParams(params);
+
+        // TextView를 업데이트하여 감정의 개수를 표시
+        textView.setText(String.valueOf(count));
+    }
+
+    //Dp값을 px로 변환
+    private int dpToPx(int dp) {
+        float density = getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
     }
 
 }
