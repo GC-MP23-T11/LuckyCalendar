@@ -163,12 +163,67 @@ public class Statistics extends Fragment {
         ImageButton leftButtonBelow = view.findViewById(R.id.left_arrow_below);
         ImageButton rightButtonBelow = view.findViewById(R.id.right_arrow_below);
 
+        ImageView stateIcon = view.findViewById(R.id.state_icon);
+        TextView stateText = view.findViewById(R.id.state_text);
+
         leftButtonBelow.setOnClickListener(v -> {
             adapter.selectPreviousItem();
+
+            // 현재 선택된 메모 가져오기
+            Memo selectedMemo = adapter.getSelectedItem();
+
+            // 선택된 메모가 null이 아닌 경우에만 UI 업데이트
+            if (selectedMemo != null) {
+                // emotion에 따라 ImageView 업데이트
+                switch (selectedMemo.getEmotion()) {
+                    case "happy":
+                        stateIcon.setImageResource(R.drawable.happy_icon);
+                        break;
+                    case "sad":
+                        stateIcon.setImageResource(R.drawable.sad_icon);
+                        break;
+                    case "bored":
+                        stateIcon.setImageResource(R.drawable.bored_icon);
+                        break;
+                    case "stressed":
+                        stateIcon.setImageResource(R.drawable.stressed_icon);
+                        break;
+                }
+
+                // TextView 업데이트
+                stateText.setText(selectedMemo.getContent());
+            }
+
+
         });
 
         rightButtonBelow.setOnClickListener(v -> {
             adapter.selectNextItem();
+
+            // 현재 선택된 메모 가져오기
+            Memo selectedMemo = adapter.getSelectedItem();
+
+            // 선택된 메모가 null이 아닌 경우에만 UI 업데이트
+            if (selectedMemo != null) {
+                // emotion에 따라 ImageView 업데이트
+                switch (selectedMemo.getEmotion()) {
+                    case "happy":
+                        stateIcon.setImageResource(R.drawable.happy_icon);
+                        break;
+                    case "sad":
+                        stateIcon.setImageResource(R.drawable.sad_icon);
+                        break;
+                    case "bored":
+                        stateIcon.setImageResource(R.drawable.bored_icon);
+                        break;
+                    case "stressed":
+                        stateIcon.setImageResource(R.drawable.stressed_icon);
+                        break;
+                }
+
+                // TextView 업데이트
+                stateText.setText(selectedMemo.getContent());
+            }
         });
 
         // 현재 날짜의 메모를 처음에 로드합니다.
@@ -263,8 +318,8 @@ public class Statistics extends Fragment {
         ImageView progressBar = view.findViewById(progressBarId);
         TextView textView = view.findViewById(textViewId);
 
-        // 각 ProgressBar의 기본 폭은 36dp이며, 각 갯수에 따라 12dp씩 증가(원래는 최대범위인 31에 맞는 6dp여야하지만 Test위해 6dp로)
-        int widthDp = 36 + count * 12;
+        // 각 ProgressBar의 기본 폭은 36dp이며, 각 갯수에 따라 18dp씩 증가(원래는 최대범위인 31에 맞는 6dp여야하지만 Test위해 과장)
+        int widthDp = 36 + count * 18;
         ViewGroup.LayoutParams params = progressBar.getLayoutParams();
         params.width = dpToPx(widthDp);
         progressBar.setLayoutParams(params);

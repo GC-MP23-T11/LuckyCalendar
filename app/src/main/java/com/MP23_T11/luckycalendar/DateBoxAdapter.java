@@ -17,6 +17,8 @@ public class DateBoxAdapter extends RecyclerView.Adapter<DateBoxAdapter.DateBoxV
     private List<Memo> memos; // 여기서 Memo는 Firebase 에서 받아올 데이터 핸들링 클래스
     private int selectedItem = -1;// 현재 선택된 박스 indexing
 
+
+
     public static class DateBoxViewHolder extends RecyclerView.ViewHolder {
         // 여기에는 view holder에 들어갈 view들을 선언
         TextView date;
@@ -29,6 +31,7 @@ public class DateBoxAdapter extends RecyclerView.Adapter<DateBoxAdapter.DateBoxV
         }
     }
 
+
     public DateBoxAdapter(List<Memo> memos) {
         this.memos = memos;
     }
@@ -39,6 +42,7 @@ public class DateBoxAdapter extends RecyclerView.Adapter<DateBoxAdapter.DateBoxV
                 .inflate(R.layout.item_date_box, parent, false);
         return new DateBoxViewHolder(v);
     }
+
 
     @Override
     public void onBindViewHolder(DateBoxViewHolder holder, int position) {
