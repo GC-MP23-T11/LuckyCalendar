@@ -23,9 +23,9 @@
     <string name="_20">/20</string>
     <string name="logo">Logo</string>
     <string name="profile_pic">Profile Pic</string>
-    <string name="demousername">DemoUserName</string>
+    <string name="demousername">Set Your Username</string>
     <string name="demodate">Mar. 18, 2023</string>
-    <string name="with_moodcalendar_from">With Mood from</string>
+    <string name="with_moodcalendar_from">With Mood</string>
     <string name="mobile_num">Mobile Num.</string>
     <string name="DemoPhoneNum">+82–10–0000–0000</string>
     <string name="DemoEmail">michael.han@thxto.me</string>
@@ -53,5 +53,7 @@
     <string name="about_us">About Us</string>
     <string name="how_was_your_day_team_11">How was Your Day? (Team 11)</string>
     <string name="credit_1">Mobile Programming (14454004) Spring 2023,\nSchool of Computing, Gachon Univ.\nInstructor: Prof. Youngmin Oh\n(youngminoh@gachon.ac.kr)</string>
+    <string name="version">Version</string>
+    <string name="credit_2"><![CDATA[How was Your Day?👋 (Team 11)\nJaedeok \"Michael\" Han\n(202135593, <hjd0907@gachon.ac.kr>)]]></string>
 
 </resources>

@@ -49,19 +49,19 @@
                 android:layout_marginHorizontal="20dp"
                 android:orientation="horizontal">
 
-                <!--                TODO: ImageView Crop(https://jeong9216.tistory.com/9)-->
-                <ImageView
-                    android:id="@+id/ProfilePic"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/inputbox"
-                    android:clickable="true"
-                    android:contentDescription="@string/profile_pic"
-                    android:focusable="true"
-                    android:onClick="modProfilePic"
-                    android:padding="3dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/demoprofilepic" />
+                <!--                &lt;!&ndash;                TODO: ImageView Crop(https://jeong9216.tistory.com/9)&ndash;&gt;-->
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/ProfilePic"-->
+                <!--                    android:layout_width="100dp"-->
+                <!--                    android:layout_height="100dp"-->
+                <!--                    android:background="@drawable/inputbox"-->
+                <!--                    android:clickable="true"-->
+                <!--                    android:contentDescription="@string/profile_pic"-->
+                <!--                    android:focusable="true"-->
+                <!--                    android:onClick="modProfilePic"-->
+                <!--                    android:padding="3dp"-->
+                <!--                    android:scaleType="fitCenter"-->
+                <!--                    android:src="@drawable/demoprofilepic" />-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -70,13 +70,14 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/UserName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/ibm_plex_sans"
-                        android:text="@string/demousername"
                         android:clickable="true"
                         android:focusable="true"
+                        android:fontFamily="@font/ibm_plex_sans"
                         android:onClick="modUserName"
+                        android:text="@string/demousername"
                         android:textSize="20sp" />
 
                     <LinearLayout
@@ -91,14 +92,15 @@
                             android:textColor="#A6A6A6"
                             android:textSize="11sp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="5dp"
-                            android:paddingEnd="5dp"
-                            android:text="@string/demodate"
-                            android:textColor="#A6A6A6"
-                            android:textSize="11sp" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/initDate"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:paddingStart="5dp"-->
+<!--                            android:paddingEnd="5dp"-->
+<!--                            android:text="@string/demodate"-->
+<!--                            android:textColor="#A6A6A6"-->
+<!--                            android:textSize="11sp" />-->
                     </LinearLayout>
                 </LinearLayout>
 
@@ -128,35 +130,35 @@
                     android:layout_marginTop="5dp"
                     android:background="#A6A6A6" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center"
-                    android:paddingHorizontal="20dp">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="48dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:paddingHorizontal="20dp">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/mobile_num"
-                        android:textSize="16sp" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/mobile_num"-->
+<!--                        android:textSize="16sp" />-->
 
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_weight="1" />
+<!--                    <View-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="48dp"-->
+<!--                        android:layout_weight="1" />-->
 
-                    <TextView
-                        android:id="@+id/MobileNum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:onClick="modUserNum"
-                        android:text="@string/DemoPhoneNum"
-                        android:textSize="16sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/MobileNum"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:clickable="true"-->
+<!--                        android:focusable="true"-->
+<!--                        android:onClick="modUserNum"-->
+<!--                        android:text="@string/DemoPhoneNum"-->
+<!--                        android:textSize="16sp" />-->
 
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -235,7 +237,7 @@
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="20dp"
                     android:paddingTop="5dp"
-                    android:text="@string/settings"
+                    android:text="@string/about_us"
                     android:textSize="17.5sp" />
 
                 <View
@@ -254,7 +256,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Version"
+                        android:text="@string/version"
                         android:textSize="16sp" />
 
                     <View
@@ -282,37 +284,29 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/about_us"
                         android:gravity="center"
                         android:paddingVertical="5dp"
-                        android:textSize="16sp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:text="@string/how_was_your_day_team_11"
-                        android:paddingVertical="5dp"
-                        android:gravity="center"
                         android:textSize="14sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:paddingVertical="5dp"
                         android:text="@string/credit_1"
-                        android:gravity="center"
                         android:textSize="12sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=""
                         android:gravity="center"
                         android:paddingVertical="10dp"
                         android:paddingBottom="5dp"
+                        android:text="@string/credit_2"
                         android:textSize="12sp" />
 
-
                 </LinearLayout>
-
-
 
             </LinearLayout>
 

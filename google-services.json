@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "490483653496",
+    "project_id": "mp-2023-t11",
+    "storage_bucket": "mp-2023-t11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490483653496:android:ace09d088048458dfd068d",
+        "android_client_info": {
+          "package_name": "kr.ac.gachon.moodcalander"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490483653496-ikckbs9q7cu7jvgkj1gtuhdec5untkjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwyyRwj03zBxu9euPRB8bbqOtjVet5178"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490483653496-ikckbs9q7cu7jvgkj1gtuhdec5untkjm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
