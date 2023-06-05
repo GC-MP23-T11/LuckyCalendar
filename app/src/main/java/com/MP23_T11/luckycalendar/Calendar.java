@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,8 +37,10 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -56,6 +59,7 @@ public class Calendar extends Fragment {
     TextView addReview;
     String currentDate;
     ProgressBar progressBar;
+    public boolean isAlreadyExistDiary;
 
     public Calendar() {
         // Required empty public constructor
@@ -104,6 +108,7 @@ public class Calendar extends Fragment {
                 // 동시에 원래 상태로 돌림
                 iconGroup.clearCheck();
                 oneLineReview.setText("");
+                isAlreadyExistDiary = false;
 
                 db.collection("dailyDiary")
                         .whereEqualTo("date", currentDate)
@@ -122,6 +127,7 @@ public class Calendar extends Fragment {
                                                 Log.d(TAG, entry.getKey().toString());
                                                 RadioButton radioButton = getActivity().findViewById(entry.getKey());
                                                 radioButton.setChecked(true);
+                                                isAlreadyExistDiary = true;
                                                 break;
                                             }
                                         }
@@ -132,6 +138,7 @@ public class Calendar extends Fragment {
                                 }
                             }
                         });
+
             }
         });
 
@@ -146,6 +153,7 @@ public class Calendar extends Fragment {
                 // 동시에 원래 상태로 돌림
                 iconGroup.clearCheck();
                 oneLineReview.setText("");
+                isAlreadyExistDiary = false;
 
                 db.collection("dailyDiary")
                         .whereEqualTo("date", currentDate)
@@ -164,6 +172,7 @@ public class Calendar extends Fragment {
                                                 Log.d(TAG, entry.getKey().toString());
                                                 RadioButton radioButton = getActivity().findViewById(entry.getKey());
                                                 radioButton.setChecked(true);
+                                                isAlreadyExistDiary = true;
                                                 break;
                                             }
                                         }
@@ -211,13 +220,11 @@ public class Calendar extends Fragment {
                 // 이미 해당 날자에 저장된 일기가 있는지 확인
                 // 없으면 그대로 진행
                 // 있으면 이전 일기에서 덮어씌우기
-
-                String radioButtonString = null;
                 /*
-                StateListDrawable stateListDrawable = (StateListDrawable) currentDrawable;
-                Drawable.ConstantState currentStateDrawable = stateListDrawable.getCurrent().getConstantState();
-                //Drawable.ConstantState constantState = currentStateDrawable.getConstantState();
+                문제발생 *비동기 호출*
+                비동기적으로 호출되어 데이터가 저장되자마자 지워버림
                  */
+                String radioButtonString = null;
 
                 for (Map.Entry<Integer, String> entry : drawableMap.entrySet()) {
                     Log.d(TAG, entry.getKey().toString());
@@ -229,7 +236,6 @@ public class Calendar extends Fragment {
                         Log.w(TAG, "can't find emotion radiobutton index");
                     }
                 }
-
 
                 if (radioButtonString == null) {
                     Log.w(TAG, "emotion을 가져오지 못함");
@@ -245,22 +251,54 @@ public class Calendar extends Fragment {
                 Log.d(TAG, "db 넣기 전");
 
                 // Firestore에 데이터를 저장합니다.
-                db.collection("dailyDiary").add(data)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                db.collection("dailyDiary")
+                        .whereEqualTo("date", currentDate)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error adding document", e);
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    List<Task<Void>> deleteTasks = new ArrayList<>();
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        deleteTasks.add(
+                                                db.collection("dailyDiary").document(document.getId())
+                                                        .delete()
+                                        );
+                                    }
+
+                                    // When all delete operations are completed
+                                    Tasks.whenAll(deleteTasks).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                // Firestore에 데이터를 저장합니다.
+                                                db.collection("dailyDiary").add(data)
+                                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                            @Override
+                                                            public void onSuccess(DocumentReference documentReference) {
+                                                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                                                progressBar.setVisibility(View.GONE);
+                                                                Toast.makeText(getContext(), "일기가 저장되었어요", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        })
+                                                        .addOnFailureListener(new OnFailureListener() {
+                                                            @Override
+                                                            public void onFailure(@NonNull Exception e) {
+                                                                Log.w(TAG, "Error adding document", e);
+                                                            }
+                                                        });
+                                            } else {
+                                                Log.w(TAG, "Error deleting documents", task.getException());
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    Log.d(TAG, "저장된 일기 없음");
+                                }
                             }
                         });
 
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(getContext(), "일기가 저장되었어요", Toast.LENGTH_SHORT).show();
+
             }
         });
 

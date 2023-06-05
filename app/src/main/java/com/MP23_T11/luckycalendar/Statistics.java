@@ -104,6 +104,7 @@ public class Statistics extends Fragment {
 
 
         // RecyclerView 설정
+        // 최대 개수 제한 둬야할 듯
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         adapter = new DateBoxAdapter(new ArrayList<>()); // 비어있는 리스트로 어댑터 초기화

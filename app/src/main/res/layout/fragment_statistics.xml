@@ -357,7 +357,7 @@
             <!-- 날짜/요일 박스       -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
+                android:layout_width="218dp"
                 android:layout_height="match_parent"
                 android:scrollbars="horizontal"
                 android:layout_weight="1"
@@ -414,12 +414,12 @@
         <TextView
             android:id="@+id/state_text"
             android:layout_width="216dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/ibm_plex_sans"
-            android:text="Best Dinner"
+            android:text="Looking back on your past feelings"
             android:textAlignment="center"
-            android:textSize="30sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/stat_icon_box" />
