@@ -1,22 +1,38 @@
 package com.MP23_T11.luckycalendar;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.text.ParseException;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +40,11 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class Statistics extends Fragment {
+    private static final String TAG = "Statistics";
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    DateBoxAdapter adapter;
 
     private DateViewModel viewModel; // DateViewModel 인스턴스를 저장하는 변수
 
@@ -76,19 +97,12 @@ public class Statistics extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_statistics, container, false);
 
-        // 데이터 준비
-        List<Memo> memos = new ArrayList<>(); // 여기에 메모 데이터를 채워넣으면됨. 예를 들어, new Memo("02", "Thursday"), new Memo("03", "Friday") 등으로 채울 수 있음.
-
-        memos.add(new Memo("01", "Monday", ""));
-        memos.add(new Memo("02", "Tuesday", ""));
-        memos.add(new Memo("03", "Wednesday", ""));
-
 
 
         // RecyclerView 설정
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        DateBoxAdapter adapter = new DateBoxAdapter(memos); // memos는 메모 데이터 리스트
+        adapter = new DateBoxAdapter(new ArrayList<>()); // 비어있는 리스트로 어댑터 초기화
         recyclerView.setAdapter(adapter);
 
         // RecyclerView 아이템 간격 설정
@@ -121,6 +135,7 @@ public class Statistics extends Fragment {
             viewModel.setMonth(month);
             viewModel.setYear(year);
             updateDate(monthTextView, yearTextView);
+            loadMemos(Integer.toString(year), Integer.toString(month)); // Load memos for this year and month
         });
 
         // 오른쪽 버튼 클릭 시 월과 연도를 증가시키는 이벤트 리스너를 설정
@@ -136,6 +151,7 @@ public class Statistics extends Fragment {
             viewModel.setMonth(month);
             viewModel.setYear(year);
             updateDate(monthTextView, yearTextView);
+            loadMemos(Integer.toString(year), Integer.toString(month)); // Load memos for this year and month
         });
 
 
@@ -151,6 +167,9 @@ public class Statistics extends Fragment {
             adapter.selectNextItem();
         });
 
+        // 현재 날짜의 메모를 처음에 로드합니다.
+        loadMemos(Integer.toString(viewModel.getYear()), Integer.toString(viewModel.getMonth()));
+
 
 
         // 생성된 뷰를 반환
@@ -161,5 +180,50 @@ public class Statistics extends Fragment {
     private void updateDate(TextView monthTextView, TextView yearTextView) {
         monthTextView.setText(monthNames[viewModel.getMonth() - 1]);
         yearTextView.setText(String.valueOf(viewModel.getYear()));
+
+        // 월과 연도를 업데이트한 후 해당 월/년도의 메모를 로드.
+        loadMemos(Integer.toString(viewModel.getYear()), Integer.toString(viewModel.getMonth()));
+
     }
+
+    private void loadMemos(String year, String month) {
+        String formattedMonth = String.format("%02d", Integer.parseInt(month));
+        db.collection("dailyDiary")
+                .whereGreaterThanOrEqualTo("date", year + "." + formattedMonth + ".01")
+                .whereLessThanOrEqualTo("date", year + "." + formattedMonth + ".31")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        List<Memo> memos = new ArrayList<>();
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            try {
+                                String dateString = document.getString("date");
+                                String review = document.getString("review");
+                                String emotion = document.getString("emotion");
+
+                                SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd", Locale.KOREA);
+                                Date date = format.parse(dateString);
+
+                                Calendar calendar = Calendar.getInstance();
+                                calendar.setTime(date);
+
+                                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                                String dayOfWeek = new SimpleDateFormat("EEEE", Locale.ENGLISH).format(date);
+
+                                memos.add(new Memo(String.format("%02d", day), dayOfWeek, emotion, review));
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.d("loadMemos", "Fetched memos: " + memos.size());
+                        adapter.setMemos(memos);
+                    } else {
+                        Log.w(TAG, "Error getting documents.", task.getException());
+                    }
+                }
+                });
+    }
+
 }

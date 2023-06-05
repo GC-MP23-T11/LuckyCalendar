@@ -3,12 +3,14 @@ package com.MP23_T11.luckycalendar;
 public class Memo {
     private String date;
     private String dayOfWeek;
+    private String emotion;
     private String content;
 
     // Constructor
-    public Memo(String date, String dayOfWeek, String content) {
+    public Memo(String date, String dayOfWeek, String emotion, String content) {
         this.date = date;
         this.dayOfWeek = dayOfWeek;
+        this.emotion = emotion;
         this.content = content;
     }
 
@@ -29,6 +31,14 @@ public class Memo {
         this.dayOfWeek = dayOfWeek;
     }
 
+    public String getEmotion() {
+        return emotion;
+    }
+
+    public void setEmotion(String emotion) {
+        this.emotion = emotion;
+    }
+
     public String getContent() {
         return content;
     }
@@ -37,3 +47,4 @@ public class Memo {
         this.content = content;
     }
 }
+

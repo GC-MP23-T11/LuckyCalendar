@@ -1,6 +1,7 @@
 package com.MP23_T11.luckycalendar;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,12 @@ public class DateBoxAdapter extends RecyclerView.Adapter<DateBoxAdapter.DateBoxV
         }
     }
 
+    public void setMemos(List<Memo> newMemos) {
+        Log.d("DateBoxAdapter", "Setting memos: " + newMemos.size());
+        memos = newMemos;
+        notifyDataSetChanged(); // UI를 업데이트
+    }
+
     @Override
     public int getItemCount() {
         return memos.size();
@@ -66,17 +73,22 @@ public class DateBoxAdapter extends RecyclerView.Adapter<DateBoxAdapter.DateBoxV
     //박스 선택 관련 method
     public void selectNextItem() {
         if (selectedItem < memos.size() - 1) {
+            int previousItem = selectedItem;
             selectedItem++;
-            notifyDataSetChanged();
+            notifyItemChanged(previousItem);
+            notifyItemChanged(selectedItem);
         }
     }
 
     public void selectPreviousItem() {
         if (selectedItem > 0) {
+            int previousItem = selectedItem;
             selectedItem--;
-            notifyDataSetChanged();
+            notifyItemChanged(previousItem);
+            notifyItemChanged(selectedItem);
         }
     }
+
 
     public Memo getSelectedItem() {
         if (selectedItem >= 0 && selectedItem < memos.size()) {
