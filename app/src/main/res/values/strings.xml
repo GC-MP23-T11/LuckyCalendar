@@ -1,5 +1,8 @@
 <resources>
+    <!--App name&Version-->
     <string name="app_name">LuckyCalendar</string>
+    <string name="versionname">1.0</string>
+
     <string name="create_account"><u>Create Account</u></string>
     <!-- 날짜 관련 string   -->
     <string name="Monday">Mo</string>
@@ -29,6 +32,7 @@
     <string name="e_mail">E-Mail</string>
     <string name="user_info">User Info.</string>
     <string name="settings">Settings</string>
+
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
@@ -43,7 +47,11 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="change_password">Change Password</string>
+    <string name="about_us">About Us</string>
+    <string name="how_was_your_day_team_11">How was Your Day? (Team 11)</string>
+    <string name="credit_1">Mobile Programming (14454004) Spring 2023,\nSchool of Computing, Gachon Univ.\nInstructor: Prof. Youngmin Oh\n(youngminoh@gachon.ac.kr)</string>
 
 </resources>

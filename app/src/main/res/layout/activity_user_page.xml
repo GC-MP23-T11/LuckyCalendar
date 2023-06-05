@@ -74,6 +74,9 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibm_plex_sans"
                         android:text="@string/demousername"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="modUserName"
                         android:textSize="20sp" />
 
                     <LinearLayout
@@ -192,7 +195,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/mobile_num"
+                        android:text="@string/fui_password_hint"
                         android:textSize="16sp" />
 
                     <View
@@ -201,10 +204,13 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/something"
+                        android:id="@+id/modPassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/DemoPhoneNum"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="modPW"
+                        android:text="@string/change_password"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -248,7 +254,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/mobile_num"
+                        android:text="Version"
                         android:textSize="16sp" />
 
                     <View
@@ -260,7 +266,7 @@
                         android:id="@+id/Setting1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/DemoPhoneNum"
+                        android:text="@string/versionname"
                         android:textSize="16sp" />
 
 
@@ -268,53 +274,45 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:orientation="vertical"
                     android:paddingHorizontal="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/e_mail"
+                        android:text="@string/about_us"
+                        android:gravity="center"
+                        android:paddingVertical="5dp"
                         android:textSize="16sp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_weight="1" />
-
                     <TextView
-                        android:id="@+id/Setting2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/DemoEmail"
-                        android:textSize="16sp" />
+                        android:text="@string/how_was_your_day_team_11"
+                        android:paddingVertical="5dp"
+                        android:gravity="center"
+                        android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="5dp"
+                        android:text="@string/credit_1"
+                        android:gravity="center"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:gravity="center"
+                        android:paddingVertical="10dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="12sp" />
+
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center"
-                    android:paddingHorizontal="20dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/mobile_num"
-                        android:textSize="16sp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:id="@+id/Setting3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/DemoPhoneNum"
-                        android:textSize="16sp" />
-                </LinearLayout>
 
             </LinearLayout>
 

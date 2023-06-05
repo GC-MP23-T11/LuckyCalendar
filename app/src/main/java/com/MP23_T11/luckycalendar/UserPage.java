@@ -1,6 +1,8 @@
 package com.MP23_T11.luckycalendar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.os.Bundle;
 import android.view.View;
@@ -17,12 +19,23 @@ public class UserPage extends AppCompatActivity {
     }
 
     public void modProfilePic(View view) {
+
     }
 
     public void modUserNum(View view) {
+
     }
 
     public void modUserEmail(View view) {
+
+    }
+
+    public void modPW(View view) {
+
+    }
+
+    public void modUserName(View view) {
+
     }
 
     //Add kind of Button onClicks
