@@ -1,17 +1,17 @@
 <resources>
     <!--App name&Version-->
     <string name="app_name">LuckyCalendar</string>
-    <string name="versionname">1.0</string>
+    <string name="versionname">1.0.1</string>
 
     <string name="create_account"><u>Create Account</u></string>
     <!-- 날짜 관련 string   -->
-    <string name="Monday">Mo</string>
+    <string name="Monday">Mon</string>
     <string name="Tuesday">Tue</string>
-    <string name="Wendsday">We</string>
-    <string name="Turseday">Tu</string>
-    <string name="Friday">Fr</string>
-    <string name="Saturday">Sa</string>
-    <string name="Sunday">Su</string>
+    <string name="Wendsday">Wed</string>
+    <string name="Turseday">Thr</string>
+    <string name="Friday">Fri</string>
+    <string name="Saturday">Sat</string>
+    <string name="Sunday">Sun</string>
     <string name="describe_your_mood_in_one_word">Describe your mood in one word…</string>
     <string name="what_is_your_mood_today">What is your mood today?</string>
     <string name="dateDemo">Select day</string>
@@ -54,6 +54,8 @@
     <string name="how_was_your_day_team_11">How was Your Day? (Team 11)</string>
     <string name="credit_1">Mobile Programming (14454004) Spring 2023,\nSchool of Computing, Gachon Univ.\nInstructor: Prof. Youngmin Oh\n(youngminoh@gachon.ac.kr)</string>
     <string name="version">Version</string>
-    <string name="credit_2"><![CDATA[How was Your Day?👋 (Team 11)\nJaedeok \"Michael\" Han\n(202135593, <hjd0907@gachon.ac.kr>)]]></string>
+    <string name="credit_2">How was Your Day?👋 (Team 11)\nJaedeok \"Michael\" Han\n(202135593, hjd0907@gachon.ac.kr)\nHyo young Shin\n(202035348, hyashin1998@gmail.com)\nHangyeol Seo\n(201935063, dongha313@gmail.com)</string>
+    <string name="daily_line">오늘의 한줄평…</string>
+    <string name="gachon_univ_logo">Gachon Univ. Logo</string>
 
 </resources>

@@ -32,7 +32,8 @@
             app:layout_constraintBottom_toTopOf="@+id/calendarView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/logo" />
+            app:layout_constraintStart_toEndOf="@+id/logo"
+            android:contentDescription="@string/app_name" />
 
         <CalendarView
             android:id="@+id/calendarView"
@@ -147,7 +148,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/inputbox"
                     android:gravity="center"
-                    android:hint="오늘의 한줄평..."
+                    android:hint="@string/daily_line"
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:padding="10dp"
@@ -174,29 +175,29 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="end"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.9"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
 
-            <TextView
-                android:id="@+id/MoodInputCharNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/demousername"
-                android:textColor="#A6A6A6" />
-            <!--        TODO: Count CharNum https://choidev-1.tistory.com/53-->
+<!--            <TextView-->
+<!--                android:id="@+id/MoodInputCharNum"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/demousername"-->
+<!--                android:textColor="#A6A6A6" />-->
+<!--            &lt;!&ndash;        TODO: Count CharNum https://choidev-1.tistory.com/53&ndash;&gt;-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/_20"
-                android:textColor="#A6A6A6" />
-        </LinearLayout>
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/_20"-->
+<!--                android:textColor="#A6A6A6" />-->
+<!--        </LinearLayout>-->
 
         <ProgressBar
             android:id="@+id/progressBar2"

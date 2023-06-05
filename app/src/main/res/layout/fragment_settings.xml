@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".Settings">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/statistical_bg_gradation">
@@ -277,13 +276,19 @@
                         android:orientation="vertical"
                         android:paddingHorizontal="20dp">
 
-                        <TextView
+                        <!--                        <TextView-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:gravity="center"-->
+                        <!--                            android:paddingVertical="5dp"-->
+                        <!--                            android:text="@string/how_was_your_day_team_11"-->
+                        <!--                            android:textSize="14sp" />-->
+
+                        <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:paddingVertical="5dp"
-                            android:text="@string/how_was_your_day_team_11"
-                            android:textSize="14sp" />
+                            android:contentDescription="@string/gachon_univ_logo"
+                            android:src="@drawable/gachon_univ_logo" />
 
                         <TextView
                             android:layout_width="wrap_content"
