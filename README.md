@@ -21,12 +21,12 @@ And you can see this month's fortune at a glance through the _statistics page_. 
 Using the statistics page, users can understand your fortune for this month and have time to think about how they will live in the future. </br>
 
 ## Program Preview
-<img src="https://github.com/GC-MP23-T11/LuckyCalendar/assets/52482199/52f93106-cf39-4e91-8155-cd15668447b4" width="33%" height="33%">
-<img src="https://github.com/GC-MP23-T11/LuckyCalendar/assets/52482199/0e7c555f-ae8b-4041-89ff-d2e7b72a746d" width="33%" height="33%">
-<img src="https://github.com/GC-MP23-T11/LuckyCalendar/assets/52482199/2098bc54-7ea8-4fb8-8a1c-d9e55ef23f3d" width="33%" height="33%"> </br>
-<img src="https://github.com/GC-MP23-T11/LuckyCalendar/assets/52482199/434d543f-23d0-4298-8942-4e948d8405c9" width="33%" height="33%"> 
-<img src="https://github.com/GC-MP23-T11/LuckyCalendar/assets/52482199/c1665941-e111-4be9-aa3a-926801e0a564" width="33%" height="33%">
-<img src="https://github.com/GC-MP23-T11/LuckyCalendar/assets/52482199/990f2180-02e0-4fa2-b113-4cc34811e053" width="33%" height="33%"> </br>
+<img src="https://github.com/GC-MP23-T11/LuckyCalendar/assets/52482199/52f93106-cf39-4e91-8155-cd15668447b4" width="32%" height="33%">
+<img src="https://github.com/GC-MP23-T11/LuckyCalendar/assets/52482199/0e7c555f-ae8b-4041-89ff-d2e7b72a746d" width="32%" height="33%">
+<img src="https://github.com/GC-MP23-T11/LuckyCalendar/assets/52482199/2098bc54-7ea8-4fb8-8a1c-d9e55ef23f3d" width="32%" height="33%"> </br>
+<img src="https://github.com/GC-MP23-T11/LuckyCalendar/assets/52482199/434d543f-23d0-4298-8942-4e948d8405c9" width="32%" height="33%"> 
+<img src="https://github.com/GC-MP23-T11/LuckyCalendar/assets/52482199/c1665941-e111-4be9-aa3a-926801e0a564" width="32%" height="33%">
+<img src="https://github.com/GC-MP23-T11/LuckyCalendar/assets/52482199/990f2180-02e0-4fa2-b113-4cc34811e053" width="32%" height="33%"> </br>
 
 ### How to execute?
 1. Navigate to the folder where you want to install the program.
